@@ -53,6 +53,14 @@ func createProject(dir string, projectName string, projectType string) {
 			removeUselessData(dir, projectName)
 			fmt.Printf("cd %s\nglide install\n", projectName)
 		}
+	case "simple":
+		githubURL := "https://github.com/kingkong64/eawsy-simple.git"
+		cmd := exec.Command("git", "clone", githubURL, projectName)
+		err := cmd.Run()
+		if err == nil {
+			removeUselessData(dir, projectName)
+			fmt.Printf("cd %s\nglide install\n", projectName)
+		}
 	default:
 		fmt.Printf("Project not found!!")
 	}
