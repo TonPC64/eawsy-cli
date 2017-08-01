@@ -8,8 +8,6 @@ import (
 	"github.com/urfave/cli"
 )
 
-red
-
 func main() {
 	app := cli.NewApp()
 	app.Name = "eawsy"
