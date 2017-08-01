@@ -2,6 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "hello",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "remotePath": "",
+      "port": 2345,
+      "host": "127.0.0.1",
+      "program": "${fileDirname}",
+      "env": {},
+      "args": [],
+      "showLog": true
+    },
+    {
       "name": "init",
       "type": "go",
       "request": "launch",
@@ -24,7 +37,7 @@
       "host": "127.0.0.1",
       "program": "${fileDirname}",
       "env": {},
-      "args": ["init", "net"],
+      "args": ["init", "gg", "GG"],
       "showLog": true
     }
   ]

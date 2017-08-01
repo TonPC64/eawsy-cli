@@ -8,13 +8,18 @@ import (
 	"github.com/urfave/cli"
 )
 
+red
+
 func main() {
 	app := cli.NewApp()
 	app.Name = "eawsy"
-	app.Usage = "cli for create project of lambda with golang from https://github.com/eawsy"
+	app.Usage = "CLI for create project of lambda with golang from https://github.com/eawsy"
 	app.Action = func(c *cli.Context) error {
-		fmt.Println("Hello friend!")
+		fmt.Printf("Hello friend!\nThis is Project for create aws-lambda-go from eawsy\nRead Doc at https://github.com/eawsy\n")
 		return nil
+	}
+	app.CommandNotFound = func(c *cli.Context, command string) {
+		fmt.Fprintf(c.App.Writer, "Thar be no %q here.\n", command)
 	}
 
 	app.Commands = []cli.Command{
@@ -28,13 +33,7 @@ func main() {
 					projectType := c.Args().First()
 					projectName := args[1]
 					dir, _ := os.Getwd()
-					switch projectType {
-					case "net":
-						cmd := exec.Command("git", "clone", "https://github.com/kingkong64/eawsy-net-template.git", projectName)
-						cmd.Run()
-						removeUselessData(dir, projectName)
-						fmt.Printf("cd %s\nglide install\n", projectName)
-					}
+					createProject(dir, projectName, projectType)
 				} else {
 					fmt.Println("Init fail pls use \"eawsy init [project_type] [project_name]")
 				}
@@ -44,6 +43,21 @@ func main() {
 	}
 
 	app.Run(os.Args)
+}
+
+func createProject(dir string, projectName string, projectType string) {
+	switch projectType {
+	case "net":
+		githubURL := "https://github.com/kingkong64/eawsy-net-template.git"
+		cmd := exec.Command("git", "clone", githubURL, projectName)
+		err := cmd.Run()
+		if err == nil {
+			removeUselessData(dir, projectName)
+			fmt.Printf("cd %s\nglide install\n", projectName)
+		}
+	default:
+		fmt.Printf("Project not found!!")
+	}
 }
 
 func removeUselessData(dir string, projectName string) {
