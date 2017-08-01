@@ -1,0 +1,17 @@
+hash: dbd61970e156d8efe5249637acb61e35f2750187ebb6d10cb94ad5955319ff4e
+updated: 2017-08-01T14:47:08.352141995+07:00
+imports:
+- name: github.com/eawsy/aws-lambda-go-core
+  version: e26eed6aa244a3d45aa693816a9c5faf39390fcd
+  subpackages:
+  - service/lambda/runtime
+- name: github.com/eawsy/aws-lambda-go-event
+  version: a318481f661f091bafea408f9967cb1ac5bf8905
+  subpackages:
+  - service/lambda/runtime/event/apigatewayproxyevt
+- name: github.com/eawsy/aws-lambda-go-net
+  version: 5cad5da09c21a3c50ee9aca7a211eb6c69a6049b
+  subpackages:
+  - service/lambda/runtime/net
+  - service/lambda/runtime/net/apigatewayproxy
+testImports: []

@@ -1,0 +1,6 @@
+package: .
+import:
+- package: github.com/eawsy/aws-lambda-go-net
+  subpackages:
+  - service/lambda/runtime/net
+  - service/lambda/runtime/net/apigatewayproxy
